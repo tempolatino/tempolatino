@@ -254,6 +254,60 @@
       .footer-top { flex-direction: column; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+
+    /* ===== TABS ===== */
+    .tabs-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .tab-btn { background: var(--tarjeta); border: 1px solid var(--borde); color: var(--carbon); font-family: var(--body); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.65rem 1.3rem; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .tab-btn:hover { border-color: var(--rojo); color: var(--rojo); }
+    .tab-btn.active { background: var(--rojo); color: var(--blanco); border-color: var(--rojo); }
+    .tab-panel { display: none; animation: fadeIn 0.25s ease; padding-top: 1.5rem; }
+    .tab-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 768px) {
+      .tabs-nav { gap: 0.4rem; }
+      .tab-btn { font-size: 0.75rem; padding: 0.55rem 0.9rem; }
+    }
+
+    /* ===== SERVICIOS ESPECIALES (Vals, XV, Privadas, Online) ===== */
+    #servicios { background: var(--crema); }
+    .servicios-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .servicio-card { background: var(--tarjeta); border: 1px solid var(--borde); padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative; transition: box-shadow 0.2s, transform 0.2s; }
+    .servicio-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .servicio-card.destacado-vals { border-top: 3px solid var(--rojo); }
+    .servicio-icon { font-size: 2rem; line-height: 1; }
+    .servicio-card h3 { font-family: var(--display); font-size: 1.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--carbon); line-height: 1; }
+    .servicio-card .servicio-precio { font-family: var(--display); font-size: 2.5rem; color: var(--rojo); line-height: 1; }
+    .servicio-card .servicio-precio sup { font-size: 1.1rem; vertical-align: super; }
+    .servicio-card .servicio-precio-nota { font-size: 0.78rem; color: var(--gris-txt); margin-top: 0.2rem; }
+    .servicio-card p { font-size: 0.9rem; color: var(--gris-txt); line-height: 1.6; flex-grow: 1; }
+    .servicio-card .servicio-features { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin: 0.5rem 0; }
+    .servicio-card .servicio-features li { font-size: 0.85rem; color: var(--gris-txt); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .servicio-card .servicio-features li::before { content: "✓"; color: var(--rojo); font-weight: 700; flex-shrink: 0; }
+    .servicio-badge-pronto { display: inline-block; background: var(--carbon); color: #ADFF2F; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.7rem; margin-bottom: 0.5rem; }
+
+    /* Modal Vals/XV */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 999; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.activo { display: flex; }
+    .modal-box { background: var(--tarjeta); max-width: 640px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 3rem 2.5rem; position: relative; }
+    .modal-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--gris-txt); line-height: 1; }
+    .modal-close:hover { color: var(--rojo); }
+    .modal-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.6rem; }
+    .modal-title { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); text-transform: uppercase; letter-spacing: 0.02em; color: var(--carbon); line-height: 1; margin-bottom: 1.2rem; }
+    .modal-body p { font-size: 0.92rem; color: var(--gris-txt); line-height: 1.7; margin-bottom: 1rem; }
+    .modal-body strong { color: var(--carbon); }
+    .modal-precio { font-family: var(--display); font-size: 3rem; color: var(--rojo); line-height: 1; margin: 1rem 0 0.2rem; }
+    .modal-precio-nota { font-size: 0.8rem; color: var(--gris-txt); margin-bottom: 1.5rem; }
+    .modal-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .modal-features li { font-size: 0.88rem; color: var(--gris-txt); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.5; }
+    .modal-features li::before { content: "✓"; color: var(--rojo); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+    .modal-horarios { background: var(--crema-osc); border: 1px solid var(--borde); padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; }
+    .modal-horarios h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.6rem; }
+    .modal-horarios p { font-size: 0.88rem; color: var(--gris-txt); margin: 0; line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .modal-box { padding: 2rem 1.5rem; }
+      .servicios-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -265,10 +319,10 @@
     </a>
 
     <div class="nav-menu">
-      <a href="#clases" class="nav-link">Clases</a>
-      <a href="#horarios" class="nav-link">Horarios</a>
-      <a href="#zumba" class="nav-link nav-zumba">Zumba</a>
-      <a href="#precios" class="nav-link">Grupos &amp; Precios</a>
+      <a href="#oferta" class="nav-link">Clases</a>
+      <a href="#oferta" class="nav-link nav-zumba" onclick="setTimeout(()=>cambiarTab('zumba'),100)">Zumba</a>
+      <a href="#precios" class="nav-link">Precios</a>
+      <a href="#oferta" class="nav-link" onclick="setTimeout(()=>cambiarTab('vals'),100)">Servicios</a>
       <a href="#faq" class="nav-link">Preguntas</a>
       <a href="http://www.shopbdc.com/" class="nav-link" target="_blank" rel="noopener" style="opacity:0;pointer-events:none;position:absolute;">Shop</a>
     </div>
@@ -382,11 +436,23 @@
 
   <div class="divider"></div>
 
-  <!-- CLASES -->
-  <section id="clases">
-    <p class="section-eyebrow">Lo que enseñamos</p>
-    <h2 class="section-title">Nuestras <em>clases</em></h2>
-    <p class="section-desc">Elige el estilo que quieras aprender. Grupos pequeños para que avances de verdad, sin importar tu nivel.</p>
+  <!-- TABS: CLASES / ZUMBA / SERVICIOS -->
+  <section id="oferta" style="background:var(--crema);padding:5rem 2rem;">
+    <p class="section-eyebrow">Todo lo que ofrecemos</p>
+    <h2 class="section-title">Clases &amp; <em>Servicios</em></h2>
+    <p class="section-desc" style="margin-bottom:2.5rem;">Selecciona lo que te interesa.</p>
+
+    <!-- Tab buttons -->
+    <div class="tabs-nav" id="tabs-nav">
+      <button class="tab-btn active" onclick="cambiarTab('clases')">🕺 Clases Grupales</button>
+      <button class="tab-btn" onclick="cambiarTab('zumba')">⚡ Zumba</button>
+      <button class="tab-btn" onclick="cambiarTab('vals')">💍 Vals de Boda</button>
+      <button class="tab-btn" onclick="cambiarTab('xv')">👑 XV Años</button>
+      <button class="tab-btn" onclick="cambiarTab('privadas')">🎯 Clases Privadas</button>
+    </div>
+
+    <!-- TAB: CLASES GRUPALES -->
+    <div class="tab-panel active" id="tab-clases">
     <div class="clases-grid">
 
       <a href="#apartado" class="clase-card" data-curso="Cumbia Bachata Lunes">
@@ -502,97 +568,136 @@
       </a>
 
     </div>
-  </section>
+    </div><!-- fin tab-clases -->
+
+    <!-- TAB: ZUMBA -->
+    <div class="tab-panel" id="tab-zumba" style="background:#14110d;border:2px solid #ADFF2F;padding:3rem 2rem;margin-top:0;">
+      <div class="zumba-header">
+        <div class="zumba-titulo">Zumba</div>
+        <p class="zumba-sub">Cardio que no se siente como ejercicio. Ritmos latinos, energía pura — lunes a viernes.</p>
+      </div>
+      <div class="zumba-grid">
+        <div class="zumba-turno">
+          <div class="zumba-turno-label">☀️ Turno Matutino</div>
+          <h3>9 AM – 10 AM</h3>
+          <p class="dias">Lunes a Viernes</p>
+          <p class="hora" style="margin-top:0.8rem;font-size:0.85rem;color:rgba(255,255,255,0.45);">Perfecto para empezar el día con energía</p>
+        </div>
+        <div class="zumba-turno">
+          <div class="zumba-turno-label">🌙 Turno Vespertino</div>
+          <h3>6 PM – 7 PM</h3>
+          <p class="dias">Lunes a Viernes</p>
+          <p class="hora" style="margin-top:0.8rem;font-size:0.85rem;color:rgba(255,255,255,0.45);">Ideal para desconectarte después del trabajo</p>
+        </div>
+      </div>
+      <div class="zumba-planes">
+        <div class="zumba-plan">
+          <div class="plan-label">Por clase</div>
+          <div class="plan-precio"><sup>$</sup>70</div>
+          <div class="plan-periodo">MXN · entrada individual</div>
+        </div>
+        <div class="zumba-plan" style="border-left:2px solid #ADFF2F;border-right:2px solid #ADFF2F;">
+          <div class="plan-label">⚡ Por semana</div>
+          <div class="plan-precio"><sup>$</sup>250</div>
+          <div class="plan-periodo">MXN · acceso toda la semana</div>
+        </div>
+        <div class="zumba-plan">
+          <div class="plan-label">Por mes</div>
+          <div class="plan-precio"><sup>$</sup>700</div>
+          <div class="plan-periodo">MXN · clases ilimitadas al mes</div>
+        </div>
+      </div>
+      <div class="zumba-cta">
+        <a href="https://wa.me/526561323773?text=Hola%2C%20quiero%20información%20sobre%20las%20clases%20de%20Zumba" class="btn-zumba-wa" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#14110d"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
+          Preguntar por Zumba
+        </a>
+        <p class="zumba-nota">📍 Plaza Del Sol, 1er piso · Enseguida del Spinning Ride</p>
+      </div>
+    </div><!-- fin tab-zumba -->
+
+    <!-- TAB: VALS DE BODA -->
+    <div class="tab-panel" id="tab-vals">
+      <div style="max-width:680px;margin:0 auto;">
+        <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--rojo);margin-bottom:0.6rem;">Servicio especial</p>
+        <h3 style="font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;letter-spacing:0.02em;color:var(--carbon);line-height:1;margin-bottom:1.2rem;">Tu Primer Vals:<br>Un Momento <em style="color:var(--rojo);font-style:normal;">Inolvidable</em></h3>
+        <p style="font-size:0.95rem;color:var(--gris-txt);line-height:1.7;margin-bottom:1rem;">El vals de bodas no es solo un baile — es el reflejo de su historia y el inicio de una nueva etapa. En Tempo Latino nos especializamos en transformar los nervios del debut en una coreografía llena de seguridad, elegancia y conexión.</p>
+        <p style="font-size:0.95rem;color:var(--gris-txt);line-height:1.7;margin-bottom:1.5rem;">Su única preocupación será disfrutar el momento. Nosotros nos encargamos de que luzcan espectaculares en la pista.</p>
+        <div style="font-family:var(--display);font-size:3.5rem;color:var(--rojo);line-height:1;"><sup style="font-size:1.5rem;">$</sup>6,800</div>
+        <div style="font-size:0.8rem;color:var(--gris-txt);margin-bottom:1.5rem;">MXN · Paquete completo</div>
+        <ul class="modal-features" style="margin-bottom:1.5rem;">
+          <li>6 clases personalizadas — una hora de instrucción técnica y artística por sesión</li>
+          <li>Maestro especializado dedicado exclusivamente a diseñar y perfeccionar su coreografía</li>
+          <li>Montaje coreográfico adaptado a su estilo y la canción que hayan elegido</li>
+          <li>Renta de espacio incluida — 6 horas de instalaciones para ensayos fluidos y profesionales</li>
+        </ul>
+        <div class="modal-horarios" style="margin-bottom:1.5rem;">
+          <h4>📅 Horarios disponibles</h4>
+          <p><strong>Viernes:</strong> Consultar disponibilidad<br><strong>Sábados:</strong> A partir de las 5:00 PM<br><strong>Domingos:</strong> Horario abierto</p>
+        </div>
+        <a href="https://wa.me/526561323773?text=Hola%2C%20me%20interesa%20el%20paquete%20de%20Vals%20de%20Boda%20en%20Tempo%20Latino.%20Quisiera%20más%20información." class="btn-primary" target="_blank" rel="noopener" style="gap:0.7rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
+          Quiero información por WhatsApp
+        </a>
+      </div>
+    </div><!-- fin tab-vals -->
+
+    <!-- TAB: XV AÑOS -->
+    <div class="tab-panel" id="tab-xv">
+      <div style="max-width:680px;margin:0 auto;">
+        <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--rojo);margin-bottom:0.6rem;">Servicio especial</p>
+        <h3 style="font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;letter-spacing:0.02em;color:var(--carbon);line-height:1;margin-bottom:1.2rem;">Tu Debut Soñado:<br>Brilla en tus <em style="color:var(--rojo);font-style:normal;">XV</em></h3>
+        <p style="font-size:0.95rem;color:var(--gris-txt);line-height:1.7;margin-bottom:1rem;">Tu baile de XV años no es solo una tradición — es el momento en que te presentas al mundo y te conviertes en la protagonista de tu propia historia. En Tempo Latino transformamos los nervios del escenario en una coreografía llena de estilo, seguridad y mucha energía.</p>
+        <p style="font-size:0.95rem;color:var(--gris-txt);line-height:1.7;margin-bottom:1.5rem;">Tú solo preocúpate por disfrutar tu noche. Nosotros nos encargamos de que brilles como una estrella en la pista.</p>
+        <div style="font-family:var(--display);font-size:3.5rem;color:var(--rojo);line-height:1;"><sup style="font-size:1.5rem;">$</sup>6,800</div>
+        <div style="font-size:0.8rem;color:var(--gris-txt);margin-bottom:1.5rem;">MXN · Paquete completo</div>
+        <ul class="modal-features" style="margin-bottom:1.5rem;">
+          <li>6 clases personalizadas — sesiones de una hora enfocadas en técnica, porte y expresión</li>
+          <li>Maestro especializado dedicado a diseñar y perfeccionar cada uno de tus pasos</li>
+          <li>Montaje coreográfico totalmente personalizado a tu género favorito y la canción que elijas</li>
+          <li>Renta de espacio incluida — 6 horas de instalaciones para ensayos cómodos y fluidos</li>
+        </ul>
+        <div class="modal-horarios" style="margin-bottom:1.5rem;">
+          <h4>📅 Horarios disponibles</h4>
+          <p><strong>Viernes, Sábado o Domingo</strong> — Flexibilidad total para que tu agenda y los preparativos no se empalmen.</p>
+        </div>
+        <a href="https://wa.me/526561323773?text=Hola%2C%20me%20interesa%20el%20paquete%20de%20Baile%20de%20XV%20Años%20en%20Tempo%20Latino.%20Quisiera%20más%20información." class="btn-primary" target="_blank" rel="noopener" style="gap:0.7rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
+          Quiero información por WhatsApp
+        </a>
+      </div>
+    </div><!-- fin tab-xv -->
+
+    <!-- TAB: CLASES PRIVADAS -->
+    <div class="tab-panel" id="tab-privadas">
+      <div style="max-width:680px;margin:0 auto;">
+        <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--rojo);margin-bottom:0.6rem;">Para ti, a tu ritmo</p>
+        <h3 style="font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;letter-spacing:0.02em;color:var(--carbon);line-height:1;margin-bottom:1.2rem;">Clases <em style="color:var(--rojo);font-style:normal;">Privadas</em></h3>
+        <p style="font-size:0.95rem;color:var(--gris-txt);line-height:1.7;margin-bottom:1.5rem;">¿Prefieres aprender a tu propio ritmo sin grupo? Clases 100% personalizadas — tú decides el estilo, el horario y si quieres llevar pareja. Perfectas para eventos especiales, reforzar técnica o simplemente avanzar más rápido.</p>
+        <div style="font-family:var(--display);font-size:3.5rem;color:var(--rojo);line-height:1;"><sup style="font-size:1.5rem;">$</sup>800</div>
+        <div style="font-size:0.8rem;color:var(--gris-txt);margin-bottom:1.5rem;">MXN por clase · precio base (varía según maestro y número de personas)</div>
+        <ul class="modal-features" style="margin-bottom:1.5rem;">
+          <li>1 hora y media por sesión</li>
+          <li>Maestro dedicado exclusivamente a ti</li>
+          <li>Horario flexible — viernes, sábado o domingo</li>
+          <li>Individual o en pareja (pareja no es obligatoria)</li>
+          <li>Cualquier estilo: cumbia, salsa, bachata, ranchera y más</li>
+        </ul>
+        <div class="modal-horarios" style="margin-bottom:1.5rem;">
+          <h4>💬 ¿Cómo cotizar?</h4>
+          <p>El precio final depende del número de personas, el maestro asignado y si requieres follower. Manda mensaje y te damos el precio exacto en minutos.</p>
+        </div>
+        <a href="https://wa.me/526561323773?text=Hola%2C%20me%20interesa%20información%20sobre%20clases%20privadas%20en%20Tempo%20Latino" class="btn-primary" target="_blank" rel="noopener" style="gap:0.7rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
+          Cotizar por WhatsApp
+        </a>
+      </div>
+    </div><!-- fin tab-privadas -->
+
+  </section><!-- fin #oferta -->
 
   <div class="divider"></div>
 
-  <!-- ZUMBA -->
-  <section id="zumba">
-    <div class="zumba-header">
-      <div class="zumba-titulo">Zumba</div>
-      <p class="zumba-sub">Cardio que no se siente como ejercicio. Ritmos latinos, energía pura — lunes a viernes.</p>
-    </div>
-
-    <div class="zumba-grid">
-      <div class="zumba-turno">
-        <div class="zumba-turno-label">☀️ Turno Matutino</div>
-        <h3>9 AM – 10 AM</h3>
-        <p class="dias">Lunes a Viernes</p>
-        <p class="hora" style="margin-top:0.8rem;font-size:0.85rem;color:rgba(255,255,255,0.45);">Perfecto para empezar el día con energía</p>
-      </div>
-      <div class="zumba-turno">
-        <div class="zumba-turno-label">🌙 Turno Vespertino</div>
-        <h3>6 PM – 7 PM</h3>
-        <p class="dias">Lunes a Viernes</p>
-        <p class="hora" style="margin-top:0.8rem;font-size:0.85rem;color:rgba(255,255,255,0.45);">Ideal para desconectarte después del trabajo</p>
-      </div>
-    </div>
-
-    <div class="zumba-planes">
-      <div class="zumba-plan">
-        <div class="plan-label">Por clase</div>
-        <div class="plan-precio"><sup>$</sup>70</div>
-        <div class="plan-periodo">MXN · entrada individual</div>
-      </div>
-      <div class="zumba-plan" style="border-left:2px solid #ADFF2F;border-right:2px solid #ADFF2F;">
-        <div class="plan-label">⚡ Por semana</div>
-        <div class="plan-precio"><sup>$</sup>250</div>
-        <div class="plan-periodo">MXN · acceso toda la semana</div>
-      </div>
-      <div class="zumba-plan">
-        <div class="plan-label">Por mes</div>
-        <div class="plan-precio"><sup>$</sup>700</div>
-        <div class="plan-periodo">MXN · clases ilimitadas al mes</div>
-      </div>
-    </div>
-
-    <div class="zumba-cta">
-      <a href="https://wa.me/526561323773?text=Hola%2C%20quiero%20información%20sobre%20las%20clases%20de%20Zumba" class="btn-zumba-wa" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#14110d"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
-        Preguntar por Zumba
-      </a>
-      <p class="zumba-nota">📍 Plaza Del Sol, 1er piso · Enseguida del Spinning Ride</p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- HORARIOS -->
-  <section id="horarios">
-    <p class="section-eyebrow">Cuándo nos vemos</p>
-    <h2 class="section-title"><em>Horarios</em> de clase</h2>
-    <p class="section-desc">Clases de lunes a sábado. Todos los grupos son de 2 horas para que aprendas de verdad.</p>
-    <div class="horarios-grid">
-      <div class="dia-bloque">
-        <div class="dia-nombre">Lunes</div>
-        <div class="clase-row"><span class="cn">Cumbia y Bachata</span><span class="ch">8:00 – 10:00 PM</span></div>
-      </div>
-      <div class="dia-bloque">
-        <div class="dia-nombre">Martes</div>
-        <div class="clase-row"><span class="cn">Cumbia Moderna</span><span class="ch">8:00 – 10:00 PM</span></div>
-      </div>
-      <div class="dia-bloque">
-        <div class="dia-nombre">Miércoles</div>
-        <div class="clase-row"><span class="cn">Ritmos de Fiestas</span><span class="ch">8:00 – 10:00 PM</span></div>
-        <div class="clase-row"><span class="cn" style="font-size:0.78rem;color:var(--gris-txt);">Rancheras, Cumbia, etc.</span><span class="ch"></span></div>
-      </div>
-      <div class="dia-bloque">
-        <div class="dia-nombre">Jueves</div>
-        <div class="clase-row"><span class="cn">Salsa y Bachata</span><span class="ch">8:00 – 10:00 PM</span></div>
-      </div>
-      <div class="dia-bloque" style="grid-column: 1 / -1;">
-        <div class="dia-nombre">Sábado</div>
-        <div class="clase-row"><span class="cn">Fiestas (Rancheras, Cumbia, Huapangos…)</span><span class="ch">10:30 AM – 12:30 PM</span></div>
-        <div class="clase-row"><span class="cn">Heels</span><span class="ch">12:30 – 2:30 PM</span></div>
-        <div class="clase-row"><span class="cn">Cumbia y Bachata</span><span class="ch">2:30 – 4:30 PM</span></div>
-        <div class="clase-row"><span class="cn">Sensual Chair Dance</span><span class="ch">4:30 – 6:30 PM</span></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PRECIOS -->
   <section id="precios">
     <p class="section-eyebrow">Inversión</p>
     <h2 class="section-title">Planes y <em>precios</em></h2>
@@ -798,6 +903,143 @@
 
   <div class="divider"></div>
 
+  <!-- SERVICIOS ESPECIALES -->
+  <section id="servicios">
+    <p class="section-eyebrow">Más allá de las clases regulares</p>
+    <h2 class="section-title">Servicios <em>especiales</em></h2>
+    <p class="section-desc">Desde tu primer vals hasta clases privadas y cursos online — tenemos lo que necesitas.</p>
+    <div class="servicios-grid">
+
+      <!-- Vals de Boda -->
+      <div class="servicio-card destacado-vals">
+        <div class="servicio-icon">💍</div>
+        <h3>Vals de Boda</h3>
+        <p>Tu primer baile como pareja, convertido en un momento que todos recordarán. Coreografía personalizada, maestro dedicado y 6 clases para que luzcan espectaculares.</p>
+        <ul class="servicio-features">
+          <li>6 clases personalizadas de 1 hora</li>
+          <li>Maestro especializado exclusivo</li>
+          <li>Montaje coreográfico a su canción</li>
+          <li>Renta de espacio incluida</li>
+        </ul>
+        <div class="servicio-precio"><sup>$</sup>6,800</div>
+        <div class="servicio-precio-nota">MXN · Paquete completo</div>
+        <button class="btn-primary" onclick="abrirModal('vals')" style="margin-top:0.5rem;">Más información →</button>
+      </div>
+
+      <!-- XV Años -->
+      <div class="servicio-card destacado-vals">
+        <div class="servicio-icon">👑</div>
+        <h3>Baile de XV Años</h3>
+        <p>Tu debut soñado. Una coreografía diseñada para que brilles como protagonista de tu historia. Con tu género favorito y la canción que elijas.</p>
+        <ul class="servicio-features">
+          <li>6 clases personalizadas de 1 hora</li>
+          <li>Maestro especializado exclusivo</li>
+          <li>Montaje adaptado a tu estilo</li>
+          <li>Renta de espacio incluida</li>
+        </ul>
+        <div class="servicio-precio"><sup>$</sup>6,800</div>
+        <div class="servicio-precio-nota">MXN · Paquete completo</div>
+        <button class="btn-primary" onclick="abrirModal('xv')" style="margin-top:0.5rem;">Más información →</button>
+      </div>
+
+      <!-- Clases Privadas -->
+      <div class="servicio-card">
+        <div class="servicio-icon">🎯</div>
+        <h3>Clases Privadas</h3>
+        <p>¿Prefieres aprender a tu propio ritmo? Clases 100% personalizadas — tú decides el ritmo, el horario y si quieres llevar pareja. Para todos los niveles.</p>
+        <ul class="servicio-features">
+          <li>1 hora y media por sesión</li>
+          <li>Maestro dedicado exclusivamente a ti</li>
+          <li>Horario flexible, fin de semana</li>
+          <li>1 o 2 personas (pareja opcional)</li>
+        </ul>
+        <div class="servicio-precio"><sup>$</sup>800</div>
+        <div class="servicio-precio-nota">MXN por clase · precio base (varía según maestro y número de personas)</div>
+        <a href="https://wa.me/526561323773?text=Hola%2C%20me%20interesa%20información%20sobre%20clases%20privadas%20en%20Tempo%20Latino" class="btn-primary" target="_blank" rel="noopener" style="margin-top:0.5rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
+          Cotizar por WhatsApp
+        </a>
+      </div>
+
+      <!-- Clases Online -->
+      <div class="servicio-card">
+        <div class="servicio-icon">🎬</div>
+        <span class="servicio-badge-pronto">Próximamente</span>
+        <h3>Clases Online</h3>
+        <p>Aprende desde cualquier lugar. Pronto tendrás acceso a cursos grabados de Cumbia, Bachata y más — a tu ritmo, desde tu casa, disponibles en Hotmart.</p>
+        <ul class="servicio-features">
+          <li>Cumbia Básica desde Cero</li>
+          <li>Videos paso a paso</li>
+          <li>Acceso ilimitado 24/7</li>
+          <li>Disponible para Juárez y El Paso</li>
+        </ul>
+        <div class="servicio-precio-nota" style="margin-top:0.5rem;">Sé de los primeros en saber cuando lancemos</div>
+        <a href="https://wa.me/526561323773?text=Hola%2C%20quiero%20que%20me%20avisen%20cuando%20lancen%20las%20clases%20online%20de%20Tempo%20Latino" class="btn-secondary" target="_blank" rel="noopener" style="margin-top:0.5rem;">Avisarme cuando esté listo</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODAL VALS DE BODA -->
+  <div class="modal-overlay" id="modal-vals" onclick="if(event.target===this)cerrarModal('vals')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="cerrarModal('vals')">✕</button>
+      <p class="modal-eyebrow">Servicio especial · Tempo Latino</p>
+      <h2 class="modal-title">Tu Primer Vals:<br>Un Momento <em style="color:var(--rojo);">Inolvidable</em></h2>
+      <div class="modal-body">
+        <p>El vals de bodas no es solo un baile — es el reflejo de su historia y el inicio de una nueva etapa. En Tempo Latino nos especializamos en transformar los nervios del debut en una coreografía llena de seguridad, elegancia y conexión.</p>
+        <p>Su única preocupación será disfrutar el momento. Nosotros nos encargamos de que luzcan espectaculares en la pista.</p>
+      </div>
+      <div class="modal-precio"><sup style="font-size:1.4rem;">$</sup>6,800</div>
+      <div class="modal-precio-nota">MXN · Paquete completo</div>
+      <ul class="modal-features">
+        <li>6 clases personalizadas — una hora de instrucción técnica y artística por sesión</li>
+        <li>Maestro especializado dedicado exclusivamente a diseñar y perfeccionar su coreografía</li>
+        <li>Montaje coreográfico adaptado a su estilo y la canción que hayan elegido</li>
+        <li>Renta de espacio incluida — 6 horas de instalaciones para ensayos fluidos y profesionales</li>
+      </ul>
+      <div class="modal-horarios">
+        <h4>📅 Horarios disponibles</h4>
+        <p><strong>Viernes:</strong> Consultar disponibilidad<br><strong>Sábados:</strong> A partir de las 5:00 PM<br><strong>Domingos:</strong> Horario abierto</p>
+      </div>
+      <a href="https://wa.me/526561323773?text=Hola%2C%20me%20interesa%20el%20paquete%20de%20Vals%20de%20Boda%20en%20Tempo%20Latino.%20Quisiera%20más%20información." class="btn-primary" target="_blank" rel="noopener" style="width:100%;justify-content:center;gap:0.7rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
+        Quiero información por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- MODAL XV AÑOS -->
+  <div class="modal-overlay" id="modal-xv" onclick="if(event.target===this)cerrarModal('xv')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="cerrarModal('xv')">✕</button>
+      <p class="modal-eyebrow">Servicio especial · Tempo Latino</p>
+      <h2 class="modal-title">Tu Debut Soñado:<br>Brilla en tus <em style="color:var(--rojo);">XV</em></h2>
+      <div class="modal-body">
+        <p>Tu baile de XV años no es solo una tradición — es el momento en que te presentas al mundo y te conviertes en la protagonista de tu propia historia. En Tempo Latino transformamos los nervios del escenario en una coreografía llena de estilo, seguridad y mucha energía.</p>
+        <p>Tú solo preocúpate por disfrutar tu noche. Nosotros nos encargamos de que brilles como una estrella en la pista.</p>
+      </div>
+      <div class="modal-precio"><sup style="font-size:1.4rem;">$</sup>6,800</div>
+      <div class="modal-precio-nota">MXN · Paquete completo</div>
+      <ul class="modal-features">
+        <li>6 clases personalizadas — sesiones de una hora enfocadas en técnica, porte y expresión</li>
+        <li>Maestro especializado dedicado a diseñar y perfeccionar cada uno de tus pasos</li>
+        <li>Montaje coreográfico totalmente personalizado a tu género favorito y la canción que elijas</li>
+        <li>Renta de espacio incluida — 6 horas de instalaciones para ensayos cómodos y fluidos</li>
+      </ul>
+      <div class="modal-horarios">
+        <h4>📅 Horarios disponibles</h4>
+        <p><strong>Viernes, Sábado o Domingo</strong> — Flexibilidad total para que tu agenda y los preparativos no se empalmen.</p>
+      </div>
+      <a href="https://wa.me/526561323773?text=Hola%2C%20me%20interesa%20el%20paquete%20de%20Baile%20de%20XV%20Años%20en%20Tempo%20Latino.%20Quisiera%20más%20información." class="btn-primary" target="_blank" rel="noopener" style="width:100%;justify-content:center;gap:0.7rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.001 1.438 5.697L.057 23.882l6.34-1.366A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.375l-.36-.214-3.732.804.839-3.633-.232-.37A9.816 9.816 0 012.182 12C2.182 6.587 6.587 2.182 12 2.182S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/></svg>
+        Quiero información por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
   <!-- UBICACIÓN -->
   <section id="ubicacion">
     <p class="section-eyebrow">Dónde estamos</p>
@@ -934,6 +1176,30 @@
       document.getElementById('reg-confirmacion').innerHTML =
         'Hola <strong style="color:var(--carbon)">' + nombre + '</strong> — tu registro para <strong style="color:var(--carbon)">' + curso + '</strong> fue recibido. Te contactaremos al <strong style="color:var(--carbon)">' + celular + '</strong> para confirmar tu lugar.';
     }
+
+    function cambiarTab(id) {
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      var panel = document.getElementById('tab-' + id);
+      if (panel) panel.classList.add('active');
+      var btns = document.querySelectorAll('.tab-btn');
+      var map = { clases:0, zumba:1, vals:2, xv:3, privadas:4 };
+      if (map[id] !== undefined && btns[map[id]]) btns[map[id]].classList.add('active');
+    }
+
+    function abrirModal(tipo) {
+      document.getElementById('modal-' + tipo).classList.add('activo');
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrarModal(tipo) {
+      document.getElementById('modal-' + tipo).classList.remove('activo');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        ['vals','xv'].forEach(function(t){ cerrarModal(t); });
+      }
+    });
 
     function toggleFaq(btn) {
       var item = btn.closest('.faq-item');
