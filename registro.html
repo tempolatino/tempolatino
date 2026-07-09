@@ -112,6 +112,9 @@
           </div>
         </div>
         <div id="reg-error" style="display:none;margin-top:1rem;padding:0.75rem 1rem;background:rgba(232,0,29,0.08);border:1px solid rgba(232,0,29,0.3);color:var(--rojo-osc);font-size:0.85rem;border-radius:2px;"></div>
+        <p style="margin-top:1rem;font-size:0.8rem;color:var(--gris-txt);text-align:left;background:var(--crema-osc);border:1px solid var(--borde);border-radius:2px;padding:0.75rem 1rem;line-height:1.5;">
+          📌 <strong style="color:var(--carbon);">Nota:</strong> El depósito de $50 MXN es solo para apartar tu lugar. El resto del costo del curso se paga <strong style="color:var(--carbon);">en efectivo, aquí en la academia</strong>, el día que inicias tu curso.
+        </p>
         <button id="btn-paso1" onclick="irPaso2()" style="margin-top:1.5rem;width:100%;padding:1rem;background:var(--rojo);color:var(--blanco);font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;border-radius:2px;">
           Continuar → Pagar $50
         </button>
@@ -120,9 +123,12 @@
       <div id="paso-2" style="display:none;text-align:center;">
         <div class="apartado-monto"><sup>$</sup>50</div>
         <div class="apartado-sub">MXN · Depósito para apartar tu lugar</div>
-        <p style="font-size:0.88rem;color:var(--gris-txt);margin-bottom:1.5rem;line-height:1.6;">
+        <p style="font-size:0.88rem;color:var(--gris-txt);margin-bottom:1rem;line-height:1.6;">
           Haz clic abajo para pagar $50 MXN con tarjeta vía Clip.<br>
           Cuando termines, regresa aquí y presiona <strong style="color:var(--carbon)">«Ya pagué»</strong>.
+        </p>
+        <p style="font-size:0.78rem;color:var(--gris-txt);text-align:left;background:var(--crema-osc);border:1px solid var(--borde);border-radius:2px;padding:0.65rem 0.9rem;line-height:1.5;margin-bottom:1.5rem;">
+          📌 El resto del curso se liquida <strong style="color:var(--carbon);">en efectivo, en la academia</strong>, el día que inicias.
         </p>
         <a href="https://pago.clip.mx/v3/7511f06b-25c6-48c7-8835-c59329d6317b" class="clip-btn" target="_blank" rel="noopener" onclick="setTimeout(()=>document.getElementById('btn-yapague').style.display='block',4000)">
           💳 Pagar $50 MXN
