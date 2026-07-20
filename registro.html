@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aparta tu lugar – Tempo Latino</title>
+  <meta name="description" content="Aparta tu lugar en Tempo Latino. Llena tus datos, paga tu depósito y listo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --crema:     #F7F5F1;
+      --crema-osc: #EFEBE4;
+      --tarjeta:   #FFFFFF;
+      --borde:     #E3DED4;
+      --carbon:    #1B1816;
+      --gris-txt:  #7A7570;
+      --rojo:      #E8001D;
+      --rojo-osc:  #B0001A;
+      --rojo-suave:#FBE7E9;
+      --blanco:    #FFFFFF;
+      --display:   'Bebas Neue', sans-serif;
+      --body:      'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--crema); color: var(--carbon); font-family: var(--body); font-size: 16px; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+
+    .top-bar { width: 100%; padding: 1.2rem 2rem; display: flex; justify-content: center; border-bottom: 1px solid var(--borde); background: var(--tarjeta); }
+    .logo-mark { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .logo-img { height: 58px; width: auto; object-fit: cover; object-position: center 40%; display: block; }
+    .logo-texto { font-family: var(--display); font-size: 1.3rem; color: var(--carbon); letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
+    .logo-texto em { color: var(--rojo); font-style: normal; }
+
+    main { width: 100%; max-width: 560px; padding: 2.5rem 1.2rem 4rem; }
+    .section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.6rem; text-align: center; }
+    .section-title { font-family: var(--display); font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; color: var(--carbon); text-align: center; }
+    .section-title em { font-style: normal; color: var(--rojo); }
+    .section-desc { margin-top: 0.8rem; color: var(--gris-txt); font-size: 0.92rem; text-align: center; }
+
+    .apartado-box { margin-top: 2rem; background: var(--tarjeta); border: 1px solid var(--borde); padding: 2rem 1.5rem; box-shadow: 0 2px 18px rgba(0,0,0,0.05); text-align: center; }
+    .apartado-monto { font-family: var(--display); font-size: 4rem; color: var(--rojo); line-height: 1; margin-bottom: 0.2rem; }
+    .apartado-monto sup { font-size: 1.8rem; vertical-align: super; }
+    .apartado-sub { font-size: 0.82rem; color: var(--gris-txt); margin-bottom: 1.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .clip-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem; background: var(--rojo); color: var(--blanco); font-weight: 700; font-size: 1rem; text-decoration: none; padding: 1.1rem 2.5rem; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s, transform 0.15s; width: 100%; }
+    .clip-btn:hover { background: var(--rojo-osc); transform: translateY(-2px); }
+    .clip-aviso { margin-top: 1rem; font-size: 0.78rem; color: var(--gris-txt); }
+    .apartado-box input, .apartado-box select { width: 100%; padding: 0.75rem 1rem; background: var(--crema); border: 1px solid var(--borde); color: var(--carbon); font-size: 0.95rem; border-radius: 2px; box-sizing: border-box; }
+    .apartado-box label { display: block; font-size: 0.78rem; color: var(--gris-txt); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+
+    footer { margin-top: auto; padding: 1.5rem; font-size: 0.75rem; color: var(--gris-txt); text-align: center; }
+    footer a { color: var(--rojo); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="logo-mark">
+      <img src="img/logo-tempo-latino.png" alt="Tempo Latino Academia de Baile" class="logo-img">
+      <span class="logo-texto">TEMPO <em>LATINO</em></span>
+    </a>
+  </div>
+
+  <main>
+    <p class="section-eyebrow">Reserva tu lugar</p>
+    <h2 class="section-title">Aparta tu <em>curso</em> en línea</h2>
+    <p class="section-desc">Llena el formulario, paga tu depósito de $50 MXN y listo — tu lugar queda asegurado.</p>
+
+    <div class="apartado-box">
+
+      <div id="form-pasos" style="display:flex;gap:0;margin-bottom:2rem;border-radius:4px;overflow:hidden;border:1px solid var(--borde);">
+        <div id="paso-ind-1" style="flex:1;padding:0.55rem;text-align:center;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--rojo);color:var(--blanco);">1 · Tus datos</div>
+        <div id="paso-ind-2" style="flex:1;padding:0.55rem;text-align:center;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--crema-osc);color:var(--gris-txt);">2 · Pagar $50</div>
+        <div id="paso-ind-3" style="flex:1;padding:0.55rem;text-align:center;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--crema-osc);color:var(--gris-txt);">3 · Confirmar</div>
+      </div>
+
+      <div id="paso-1">
+        <div style="display:flex;flex-direction:column;gap:1rem;text-align:left;">
+          <div>
+            <label>Nombre completo *</label>
+            <input id="reg-nombre" type="text" placeholder="Ej. María González Ruiz">
+          </div>
+          <div>
+            <label>Celular (WhatsApp) *</label>
+            <input id="reg-celular" type="tel" placeholder="656 123 4567">
+          </div>
+          <div>
+            <label>Género *</label>
+            <select id="reg-genero">
+              <option value="">— Selecciona —</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Hombre">Hombre</option>
+              <option value="Prefiero no decir">Prefiero no decir</option>
+            </select>
+          </div>
+          <div>
+            <label>Curso que te interesa *</label>
+            <select id="reg-curso">
+              <option value="">— Selecciona un curso —</option>
+              <option value="Salsa y Bachata · Lunes 8–10 PM">Salsa y Bachata · Lunes 8–10 PM</option>
+              <option value="Twerk · Martes y Jueves 7–8 PM">Twerk · Martes y Jueves 7–8 PM</option>
+              <option value="Cumbia Moderna · Martes 8–10 PM">Cumbia Moderna · Martes 8–10 PM</option>
+              <option value="Ritmos de Fiesta · Miércoles 8–10 PM">Ritmos de Fiesta · Miércoles 8–10 PM</option>
+              <option value="Rancheras · Jueves 8–10 PM">Rancheras · Jueves 8–10 PM</option>
+              <option value="Ritmos de Fiesta · Sábado 10:00 AM">Ritmos de Fiesta · Sábado 10:00 AM</option>
+              <option value="Cumbia Moderna · Sábado 12:00 PM">Cumbia Moderna · Sábado 12:00 PM</option>
+              <option value="Tango · Sábado 2:00 PM">Tango · Sábado 2:00 PM</option>
+              <option value="Flex y Body Control · Sábado 3:00 PM">Flex y Body Control · Sábado 3:00 PM</option>
+              <option value="Sensual Chair Dance · Sábado 4:00 PM">Sensual Chair Dance · Sábado 4:00 PM</option>
+              <option value="Twerk · Domingo 12:00 PM">Twerk · Domingo 12:00 PM</option>
+              <option value="Zumba · Matutino 9–10 AM (Lun–Vie)">Zumba · Matutino 9–10 AM (Lun–Vie)</option>
+              <option value="Zumba · Vespertino 6–7 PM (Lun–Vie)">Zumba · Vespertino 6–7 PM (Lun–Vie)</option>
+            </select>
+          </div>
+        </div>
+        <div id="reg-error" style="display:none;margin-top:1rem;padding:0.75rem 1rem;background:rgba(232,0,29,0.08);border:1px solid rgba(232,0,29,0.3);color:var(--rojo-osc);font-size:0.85rem;border-radius:2px;"></div>
+        <p style="margin-top:1rem;font-size:0.8rem;color:var(--gris-txt);text-align:left;background:var(--crema-osc);border:1px solid var(--borde);border-radius:2px;padding:0.75rem 1rem;line-height:1.5;">
+          📌 <strong style="color:var(--carbon);">Nota:</strong> El depósito de $50 MXN es solo para apartar tu lugar. El resto del costo del curso se paga <strong style="color:var(--carbon);">en efectivo, aquí en la academia</strong>, el día que inicias tu curso.
+        </p>
+        <button id="btn-paso1" onclick="irPaso2()" style="margin-top:1.5rem;width:100%;padding:1rem;background:var(--rojo);color:var(--blanco);font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;border-radius:2px;">
+          Continuar → Pagar $50
+        </button>
+      </div>
+
+      <div id="paso-2" style="display:none;text-align:center;">
+        <div class="apartado-monto"><sup>$</sup>50</div>
+        <div class="apartado-sub">MXN · Depósito para apartar tu lugar</div>
+        <p style="font-size:0.88rem;color:var(--gris-txt);margin-bottom:1rem;line-height:1.6;">
+          Haz clic abajo para pagar $50 MXN con tarjeta vía Clip.<br>
+          Cuando termines, regresa aquí y presiona <strong style="color:var(--carbon)">«Ya pagué»</strong>.
+        </p>
+        <p style="font-size:0.78rem;color:var(--gris-txt);text-align:left;background:var(--crema-osc);border:1px solid var(--borde);border-radius:2px;padding:0.65rem 0.9rem;line-height:1.5;margin-bottom:1.5rem;">
+          📌 El resto del curso se liquida <strong style="color:var(--carbon);">en efectivo, en la academia</strong>, el día que inicias.
+        </p>
+        <a href="https://pago.clip.mx/v3/342a546f-4044-4caa-9275-c6113dd61481" class="clip-btn" target="_blank" rel="noopener" onclick="setTimeout(()=>document.getElementById('btn-yapague').style.display='block',4000)">
+          💳 Pagar $50 MXN
+        </a>
+        <button id="btn-yapague" onclick="irPaso3()" style="display:none;margin-top:1rem;width:100%;padding:1rem;background:var(--crema-osc);border:1px solid var(--borde);color:var(--carbon);font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;border-radius:2px;">
+          ✅ Ya pagué — confirmar registro
+        </button>
+        <p class="clip-aviso" style="margin-top:1rem;">⚡ El depósito se descuenta del total del curso · Pago 100% seguro vía Clip</p>
+      </div>
+
+      <div id="paso-3" style="display:none;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+        <h3 style="font-family:var(--display);font-size:1.6rem;color:var(--carbon);margin-bottom:0.5rem;">¡Ya quedaste registrado!</h3>
+        <p id="reg-confirmacion" style="font-size:0.9rem;color:var(--gris-txt);line-height:1.7;margin-bottom:1.5rem;"></p>
+        <p style="font-size:0.85rem;color:var(--gris-txt);padding:1rem;background:var(--crema-osc);border:1px solid var(--borde);border-radius:2px;line-height:1.6;">
+          📲 Mándanos tu comprobante de pago por WhatsApp para confirmar tu lugar al 100%.
+        </p>
+        <a href="https://wa.me/526561323773" target="_blank" rel="noopener" style="display:inline-block;margin-top:1.2rem;padding:0.85rem 2rem;background:var(--rojo);color:var(--blanco);font-weight:700;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:2px;">
+          Enviar comprobante por WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    ¿Dudas? Escríbenos por <a href="https://wa.me/526561323773" target="_blank" rel="noopener">WhatsApp</a>
+  </footer>
+
+  <script>
+    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbwzWxuhEvGfwcPlRvrhILJGnjATy2FlRW8IfWvMj9YwXKm2KFJreB4K8EprcIQyEK3A2A/exec";
+
+    // Si el link trae ?curso=Nombre del curso, lo preselecciona.
+    (function preseleccionarCurso() {
+      const params = new URLSearchParams(window.location.search);
+      const curso = params.get('curso');
+      if (!curso) return;
+      const select = document.getElementById('reg-curso');
+      for (const opt of select.options) {
+        if (opt.value.toLowerCase().indexOf(curso.toLowerCase()) !== -1) {
+          select.value = opt.value;
+          break;
+        }
+      }
+    })();
+
+    function irPaso2() {
+      var nombre  = document.getElementById('reg-nombre').value.trim();
+      var celular = document.getElementById('reg-celular').value.trim();
+      var genero  = document.getElementById('reg-genero').value;
+      var curso   = document.getElementById('reg-curso').value;
+      var err = document.getElementById('reg-error');
+
+      if (!nombre) {
+        err.textContent = 'Por favor ingresa tu nombre completo.';
+        err.style.display = 'block';
+        return;
+      }
+      if (!genero) {
+        err.textContent = 'Por favor selecciona tu género.';
+        err.style.display = 'block';
+        return;
+      }
+      if (!curso) {
+        err.textContent = 'Por favor selecciona un curso.';
+        err.style.display = 'block';
+        return;
+      }
+      var celularLimpio = celular.replace(/\D/g, '');
+      if (celularLimpio.length !== 10) {
+        err.textContent = 'Ingresa un número de celular válido (10 dígitos).';
+        err.style.display = 'block';
+        return;
+      }
+      err.style.display = 'none';
+      document.getElementById('paso-1').style.display = 'none';
+      document.getElementById('paso-2').style.display = 'block';
+      document.getElementById('paso-ind-1').style.background = '#ddd6c8';
+      document.getElementById('paso-ind-1').style.color = '#8a857d';
+      document.getElementById('paso-ind-2').style.background = 'var(--rojo)';
+      document.getElementById('paso-ind-2').style.color = '#fff';
+    }
+
+    function irPaso3() {
+      var nombre  = document.getElementById('reg-nombre').value.trim();
+      var celular = document.getElementById('reg-celular').value.trim();
+      var curso   = document.getElementById('reg-curso').value;
+      var fecha   = new Date().toLocaleDateString('es-MX');
+
+      fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: nombre, celular: celular, genero: document.getElementById('reg-genero').value, curso: curso, anticipo: 50, fecha: fecha })
+      });
+
+      document.getElementById('paso-2').style.display = 'none';
+      document.getElementById('paso-3').style.display = 'block';
+      document.getElementById('paso-ind-2').style.background = '#ddd6c8';
+      document.getElementById('paso-ind-2').style.color = '#8a857d';
+      document.getElementById('paso-ind-3').style.background = 'var(--rojo)';
+      document.getElementById('paso-ind-3').style.color = '#fff';
+      document.getElementById('reg-confirmacion').innerHTML =
+        'Hola <strong style="color:var(--carbon)">' + nombre + '</strong> — tu registro para <strong style="color:var(--carbon)">' + curso + '</strong> fue recibido. Te contactaremos al <strong style="color:var(--carbon)">' + celular + '</strong> para confirmar tu lugar.';
+    }
+  </script>
+</body>
+</html>
