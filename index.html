@@ -7,31 +7,35 @@
   <meta name="description" content="Aprende salsa, bachata, cumbia, rancheras, flex y más en Ciudad Juárez. Clases para todos los niveles en Plaza Del Sol." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      /* TEMA CLARO */
-      --crema:     #F7F5F1;   /* fondo principal, blanco roto, no brilloso */
-      --crema-osc: #EFEBE4;   /* fondo secciones alternas */
-      --tarjeta:   #FFFFFF;
-      --borde:     #E3DED4;
-      --carbon:    #1B1816;   /* texto principal, casi negro cálido */
-      --gris-txt:  #7A7570;
-      --rojo:      #E8001D;
-      --rojo-osc:  #B0001A;
-      --rojo-suave:#FBE7E9;
+      /* TEMA DORADO */
+      --crema:     #0A0A0C;   /* fondo principal, negro profundo */
+      --crema-osc: #131316;   /* fondo secciones alternas */
+      --tarjeta:   rgba(20, 20, 25, 0.7);
+      --borde:     rgba(212, 175, 55, 0.22);
+      --carbon:    #E7E2D6;   /* texto principal, blanco cálido */
+      --gris-txt:  #A0A0A8;
+      --rojo:      #D4AF37;   /* dorado principal (antes rojo de marca) */
+      --rojo-osc:  #AA771C;   /* dorado oscuro / hover */
+      --rojo-suave: rgba(212, 175, 55, 0.14);
       --blanco:    #FFFFFF;
-      --display:   'Bebas Neue', sans-serif;
-      --body:      'Inter', sans-serif;
+      --bg-deep:   #050507;   /* negro sólido para bloques de contraste */
+      --gold-light:#F3E5AB;
+      --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+      --display:   'Cinzel', serif;
+      --body:      'Plus Jakarta Sans', sans-serif;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--crema); color: var(--carbon); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
     /* ===== NAV ===== */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 2rem; background: rgba(247,245,241,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 2rem; background: rgba(10,10,12,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--borde); }
     .logo-mark { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-    .logo-img { height: 78px; width: auto; object-fit: cover; object-position: center 40%; display: block; }
+    .logo-img { height: 64px; width: auto; object-fit: contain; display: block; }
     .logo-icono { width: 38px; height: 38px; border-radius: 50%; background: var(--carbon); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .logo-icono svg { width: 20px; height: 20px; }
     .logo-texto { font-family: var(--display); font-size: 1.55rem; color: var(--carbon); letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
@@ -41,9 +45,9 @@
     .nav-menu { display: flex; align-items: center; gap: 2.1rem; }
     .nav-link { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--carbon); text-decoration: none; transition: color 0.2s; position: relative; }
     .nav-link:hover { color: var(--rojo); }
-    .nav-zumba { color: var(--rojo-osc); }
+    .nav-zumba { color: #ADFF2F; }
     .nav-right { display: flex; align-items: center; gap: 1.1rem; }
-    .nav-cta { background: var(--rojo); color: var(--blanco); font-weight: 700; font-size: 0.8rem; text-decoration: none; padding: 0.6rem 1.3rem; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.2s; white-space: nowrap; }
+    .nav-cta { background: var(--rojo); color: #0A0A0C; font-weight: 700; font-size: 0.8rem; text-decoration: none; padding: 0.6rem 1.3rem; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.2s; white-space: nowrap; }
     .nav-cta:hover { background: var(--rojo-osc); }
     .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; }
     .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--carbon); margin: 5px 0; }
@@ -53,14 +57,14 @@
     .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 55% 55% at 82% 40%, var(--rojo-suave) 0%, transparent 70%); pointer-events: none; }
     .hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rojo); margin-bottom: 1rem; }
     .hero h1 { font-family: var(--display); font-size: clamp(3.4rem, 10vw, 8.5rem); line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase; max-width: 900px; position: relative; color: var(--carbon); }
-    .hero h1 em { font-style: normal; color: var(--rojo); }
+    .hero h1 em { font-style: normal; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
     .hero-sub { margin-top: 1.8rem; font-size: 1.08rem; color: var(--gris-txt); max-width: 480px; line-height: 1.7; }
     .hero-sub strong { color: var(--carbon); }
     .hero-actions { margin-top: 2.3rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rojo); color: var(--blanco); font-weight: 700; font-size: 0.88rem; text-decoration: none; padding: 1rem 2rem; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rojo); color: #0A0A0C; font-weight: 700; font-size: 0.88rem; text-decoration: none; padding: 1rem 2rem; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
     .btn-primary:hover { background: var(--rojo-osc); transform: translateY(-2px); }
     .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--carbon); color: var(--carbon); font-weight: 600; font-size: 0.88rem; text-decoration: none; padding: 1rem 2rem; text-transform: uppercase; letter-spacing: 0.06em; transition: border-color 0.2s, background 0.2s, color 0.2s; }
-    .btn-secondary:hover { border-color: var(--rojo); background: var(--rojo); color: var(--blanco); }
+    .btn-secondary:hover { border-color: var(--rojo); background: var(--rojo); color: #0A0A0C; }
     .hero-strip { margin-top: 3.5rem; display: flex; gap: 3rem; flex-wrap: wrap; }
     .strip-stat .num { font-family: var(--display); font-size: 2.1rem; color: var(--rojo); line-height: 1; }
     .strip-stat .lbl { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gris-txt); }
@@ -69,7 +73,7 @@
     section { padding: 5rem 2rem; }
     .section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.75rem; }
     .section-title { font-family: var(--display); font-size: clamp(2.3rem, 5.5vw, 4rem); line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; max-width: 700px; color: var(--carbon); }
-    .section-title em { font-style: normal; color: var(--rojo); }
+    .section-title em { font-style: normal; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
     .section-desc { margin-top: 1rem; color: var(--gris-txt); max-width: 560px; font-size: 0.95rem; }
     .divider { width: 100%; height: 1px; background: var(--borde); }
 
@@ -92,18 +96,18 @@
       cursor: pointer; text-decoration: none; color: var(--blanco);
       transition: transform 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
-    .clase-card:hover { transform: translateY(-4px); }
+    .clase-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.15); }
     .clase-card:hover .clase-overlay { background: linear-gradient(to top, rgba(10,8,6,0.97) 0%, rgba(10,8,6,0.6) 60%, rgba(10,8,6,0.15) 100%); }
-    .clase-img { position: absolute; inset: 0; background-size: cover; background-position: center top; background-color: #d8d2c6; transition: transform 0.4s ease; }
+    .clase-img { position: absolute; inset: 0; background-size: cover; background-position: center top; background-color: #1a1712; transition: transform 0.4s ease; }
     .clase-card:hover .clase-img { transform: scale(1.04); }
     .clase-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,8,6,0.92) 0%, rgba(10,8,6,0.5) 55%, rgba(10,8,6,0.12) 100%); transition: background 0.3s; }
-    .clase-badge { position: absolute; top: 1.2rem; left: 1.2rem; background: var(--rojo); color: var(--blanco); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.65rem; z-index: 2; }
+    .clase-badge { position: absolute; top: 1.2rem; left: 1.2rem; background: var(--rojo); color: #0A0A0C; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.65rem; z-index: 2; }
     .clase-content { position: relative; z-index: 2; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
     .clase-horario { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #FF6B7A; }
     .clase-card h3 { font-family: var(--display); font-size: 2rem; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; color: var(--blanco); }
     .clase-card .clase-desc { font-size: 0.83rem; color: rgba(255,255,255,0.8); line-height: 1.5; margin-top: 0.2rem; }
     .clase-nota { font-size: 0.72rem; color: rgba(255,255,255,0.55); font-style: italic; }
-    .clase-cta { margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rojo); color: var(--blanco); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.65rem 1.3rem; align-self: flex-start; transition: background 0.2s; }
+    .clase-cta { margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rojo); color: #0A0A0C; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.65rem 1.3rem; align-self: flex-start; transition: background 0.2s; }
     .clase-card:hover .clase-cta { background: var(--rojo-osc); }
     .disp-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; margin-bottom: 0.4rem; align-self: flex-start; }
     .disp-badge.disponible { background: rgba(0,180,80,0.18); color: #00e06b; border: 1px solid rgba(0,180,80,0.35); }
@@ -151,12 +155,12 @@
     #precios { background: var(--crema-osc); }
     .precios-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--borde); }
     .precio-card { background: var(--tarjeta); padding: 2.5rem 2rem; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
-    .precio-card.destacado { background: var(--carbon); }
+    .precio-card.destacado { background: var(--bg-deep); border: 1px solid var(--rojo); }
     .precio-card.destacado h3 { color: rgba(255,255,255,0.6); }
     .precio-card.destacado .precio-monto { color: #fff; }
     .precio-card.destacado .precio-periodo,
     .precio-card.destacado .precio-features li { color: rgba(255,255,255,0.65); }
-    .precio-badge { position: absolute; top: -1px; right: 2rem; background: var(--rojo); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.7rem; color: var(--blanco); }
+    .precio-badge { position: absolute; top: -1px; right: 2rem; background: var(--rojo); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.7rem; color: #0A0A0C; }
     .precio-card h3 { font-family: var(--display); font-size: 1.3rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris-txt); margin-bottom: 1rem; }
     .precio-monto { font-family: var(--display); font-size: 3.5rem; color: var(--carbon); line-height: 1; }
     .precio-monto sup { font-size: 1.5rem; vertical-align: super; color: var(--rojo); }
@@ -175,7 +179,7 @@
     .paso-card h3 { font-family: var(--display); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; color: var(--carbon); }
     .paso-card p { font-size: 0.88rem; color: var(--gris-txt); line-height: 1.6; }
     .paso-card strong { color: var(--carbon); }
-    .paso-wa, .paso-pago { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.9rem; background: var(--rojo); color: var(--blanco); font-weight: 700; font-size: 0.78rem; text-decoration: none; padding: 0.5rem 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .paso-wa, .paso-pago { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.9rem; background: var(--rojo); color: #0A0A0C; font-weight: 700; font-size: 0.78rem; text-decoration: none; padding: 0.5rem 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* ===== APARTADO ===== */
     #apartado { background: var(--crema-osc); text-align: center; }
@@ -184,7 +188,7 @@
     .apartado-monto { font-family: var(--display); font-size: 4rem; color: var(--rojo); line-height: 1; margin-bottom: 0.2rem; }
     .apartado-monto sup { font-size: 1.8rem; vertical-align: super; }
     .apartado-sub { font-size: 0.82rem; color: var(--gris-txt); margin-bottom: 1.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
-    .clip-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem; background: var(--rojo); color: var(--blanco); font-weight: 700; font-size: 1rem; text-decoration: none; padding: 1.1rem 2.5rem; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s, transform 0.15s; width: 100%; }
+    .clip-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem; background: var(--rojo); color: #0A0A0C; font-weight: 700; font-size: 1rem; text-decoration: none; padding: 1.1rem 2.5rem; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s, transform 0.15s; width: 100%; }
     .clip-btn:hover { background: var(--rojo-osc); transform: translateY(-2px); }
     .clip-aviso { margin-top: 1rem; font-size: 0.78rem; color: var(--gris-txt); }
     .apartado-box input, .apartado-box select { width: 100%; padding: 0.75rem 1rem; background: var(--crema); border: 1px solid var(--borde); color: var(--carbon); font-size: 0.95rem; border-radius: 2px; box-sizing: border-box; }
@@ -212,19 +216,19 @@
     .ubic-info { background: var(--tarjeta); padding: 3rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; text-align: left; }
     .ubic-dato .ubic-label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.2rem; }
     .ubic-dato .ubic-val { display: block; font-size: 0.95rem; color: var(--carbon); line-height: 1.5; }
-    .map-placeholder { background: var(--carbon); min-height: 360px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: rgba(255,255,255,0.55); font-size: 0.88rem; text-align: center; padding: 2rem; }
+    .map-placeholder { background: var(--bg-deep); border: 1px solid var(--borde); min-height: 360px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: rgba(255,255,255,0.55); font-size: 0.88rem; text-align: center; padding: 2rem; }
 
     /* ===== CONTACTO (momento de color sólido) ===== */
-    #contacto { background: var(--rojo); text-align: center; padding: 6rem 2rem; }
-    #contacto .section-eyebrow { color: rgba(255,255,255,0.7); }
-    #contacto .section-title { color: var(--blanco); margin: 0 auto; }
-    #contacto .section-title em { color: var(--carbon); }
-    #contacto .section-desc { color: rgba(255,255,255,0.85); margin: 1rem auto 2.5rem; }
-    .whatsapp-btn { display: inline-flex; align-items: center; gap: 0.8rem; background: var(--carbon); color: var(--blanco); font-weight: 700; font-size: 1rem; text-decoration: none; padding: 1.1rem 2.5rem; text-transform: uppercase; letter-spacing: 0.06em; transition: transform 0.2s; }
+    #contacto { background: var(--gold-gradient); text-align: center; padding: 6rem 2rem; }
+    #contacto .section-eyebrow { color: rgba(10,10,12,0.6); }
+    #contacto .section-title { color: #0A0A0C; margin: 0 auto; }
+    #contacto .section-title em { color: var(--bg-deep); text-decoration: underline; text-decoration-color: rgba(10,10,12,0.35); }
+    #contacto .section-desc { color: rgba(10,10,12,0.75); margin: 1rem auto 2.5rem; }
+    .whatsapp-btn { display: inline-flex; align-items: center; gap: 0.8rem; background: var(--bg-deep); color: var(--gold-light, #F3E5AB); font-weight: 700; font-size: 1rem; text-decoration: none; padding: 1.1rem 2.5rem; text-transform: uppercase; letter-spacing: 0.06em; transition: transform 0.2s; }
     .whatsapp-btn:hover { transform: scale(1.03); }
 
     /* ===== FOOTER ===== */
-    footer { background: var(--carbon); padding: 3rem 2rem 2rem; }
+    footer { background: var(--bg-deep); border-top: 1px solid var(--borde); padding: 3rem 2rem 2rem; }
     .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; }
     .footer-logo .logo-texto { color: var(--blanco); }
     .footer-cols { display: flex; gap: 3rem; flex-wrap: wrap; }
@@ -259,7 +263,7 @@
     .tabs-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
     .tab-btn { background: var(--tarjeta); border: 1px solid var(--borde); color: var(--carbon); font-family: var(--body); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.65rem 1.3rem; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; white-space: nowrap; }
     .tab-btn:hover { border-color: var(--rojo); color: var(--rojo); }
-    .tab-btn.active { background: var(--rojo); color: var(--blanco); border-color: var(--rojo); }
+    .tab-btn.active { background: var(--rojo); color: #0A0A0C; border-color: var(--rojo); }
     .tab-panel { display: none; animation: fadeIn 0.25s ease; padding-top: 1.5rem; }
     .tab-panel.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -272,7 +276,7 @@
     #servicios { background: var(--crema); }
     .servicios-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .servicio-card { background: var(--tarjeta); border: 1px solid var(--borde); padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative; transition: box-shadow 0.2s, transform 0.2s; }
-    .servicio-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .servicio-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.15); transform: translateY(-3px); border-color: var(--rojo); }
     .servicio-card.destacado-vals { border-top: 3px solid var(--rojo); }
     .servicio-icon { font-size: 2rem; line-height: 1; }
     .servicio-card h3 { font-family: var(--display); font-size: 1.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--carbon); line-height: 1; }
@@ -283,7 +287,7 @@
     .servicio-card .servicio-features { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin: 0.5rem 0; }
     .servicio-card .servicio-features li { font-size: 0.85rem; color: var(--gris-txt); display: flex; align-items: flex-start; gap: 0.5rem; }
     .servicio-card .servicio-features li::before { content: "✓"; color: var(--rojo); font-weight: 700; flex-shrink: 0; }
-    .servicio-badge-pronto { display: inline-block; background: var(--carbon); color: #ADFF2F; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.7rem; margin-bottom: 0.5rem; }
+    .servicio-badge-pronto { display: inline-block; background: var(--bg-deep); color: #ADFF2F; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.7rem; margin-bottom: 0.5rem; }
 
     /* Modal Vals/XV */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 999; align-items: center; justify-content: center; padding: 1rem; }
@@ -810,7 +814,7 @@
     <div class="apartado-box">
 
       <div id="form-pasos" style="display:flex;gap:0;margin-bottom:2rem;border-radius:4px;overflow:hidden;border:1px solid var(--borde);">
-        <div id="paso-ind-1" style="flex:1;padding:0.55rem;text-align:center;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--rojo);color:var(--blanco);">1 · Tus datos</div>
+        <div id="paso-ind-1" style="flex:1;padding:0.55rem;text-align:center;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--rojo);color:#0A0A0C;">1 · Tus datos</div>
         <div id="paso-ind-2" style="flex:1;padding:0.55rem;text-align:center;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--crema-osc);color:var(--gris-txt);">2 · Pagar $50</div>
         <div id="paso-ind-3" style="flex:1;padding:0.55rem;text-align:center;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--crema-osc);color:var(--gris-txt);">3 · Confirmar</div>
       </div>
@@ -855,8 +859,8 @@
             </select>
           </div>
         </div>
-        <div id="reg-error" style="display:none;margin-top:1rem;padding:0.75rem 1rem;background:rgba(232,0,29,0.08);border:1px solid rgba(232,0,29,0.3);color:var(--rojo-osc);font-size:0.85rem;border-radius:2px;"></div>
-        <button id="btn-paso1" onclick="irPaso2()" style="margin-top:1.5rem;width:100%;padding:1rem;background:var(--rojo);color:var(--blanco);font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;border-radius:2px;">
+        <div id="reg-error" style="display:none;margin-top:1rem;padding:0.75rem 1rem;background:rgba(255,90,90,0.1);border:1px solid rgba(255,90,90,0.35);color:#ff8a8a;font-size:0.85rem;border-radius:2px;"></div>
+        <button id="btn-paso1" onclick="irPaso2()" style="margin-top:1.5rem;width:100%;padding:1rem;background:var(--rojo);color:#0A0A0C;font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;border-radius:2px;">
           Continuar → Pagar $50
         </button>
       </div>
@@ -884,7 +888,7 @@
         <p style="font-size:0.85rem;color:var(--gris-txt);padding:1rem;background:var(--crema-osc);border:1px solid var(--borde);border-radius:2px;line-height:1.6;">
           📲 Mándanos tu comprobante de pago por WhatsApp para confirmar tu lugar al 100%.
         </p>
-        <a href="https://wa.me/526561323773" target="_blank" rel="noopener" style="display:inline-block;margin-top:1.2rem;padding:0.85rem 2rem;background:var(--rojo);color:var(--blanco);font-weight:700;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:2px;">
+        <a href="https://wa.me/526561323773" target="_blank" rel="noopener" style="display:inline-block;margin-top:1.2rem;padding:0.85rem 2rem;background:var(--rojo);color:#0A0A0C;font-weight:700;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.08em;text-decoration:none;border-radius:2px;">
           Enviar comprobante por WhatsApp
         </a>
       </div>
@@ -1100,7 +1104,7 @@
         <svg width="48" height="48" viewBox="0 0 24 24" fill="white" style="opacity:0.4"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         <span style="font-weight:600;color:#fff;">Plaza Del Sol</span>
         <span>Av. Ramón Rayón y C. Yepómera<br>1er piso · Enseguida del Spinning Ride<br>Ciudad Juárez, Chih.</span>
-        <a href="https://www.google.com/maps/search/Plaza+Del+Sol+Juárez+Chihuahua" target="_blank" rel="noopener" style="color:#ff8a93;font-size:0.82rem;margin-top:0.5rem;">Abrir en Google Maps →</a>
+        <a href="https://www.google.com/maps/search/Plaza+Del+Sol+Juárez+Chihuahua" target="_blank" rel="noopener" style="color:var(--rojo);font-size:0.82rem;margin-top:0.5rem;">Abrir en Google Maps →</a>
       </div>
     </div>
   </section>
@@ -1183,10 +1187,10 @@
       err.style.display = 'none';
       document.getElementById('paso-1').style.display = 'none';
       document.getElementById('paso-2').style.display = 'block';
-      document.getElementById('paso-ind-1').style.background = '#ddd6c8';
-      document.getElementById('paso-ind-1').style.color = '#8a857d';
+      document.getElementById('paso-ind-1').style.background = 'var(--crema-osc)';
+      document.getElementById('paso-ind-1').style.color = 'var(--gris-txt)';
       document.getElementById('paso-ind-2').style.background = 'var(--rojo)';
-      document.getElementById('paso-ind-2').style.color = '#fff';
+      document.getElementById('paso-ind-2').style.color = '#0A0A0C';
     }
 
     function irPaso3() {
@@ -1204,10 +1208,10 @@
 
       document.getElementById('paso-2').style.display = 'none';
       document.getElementById('paso-3').style.display = 'block';
-      document.getElementById('paso-ind-2').style.background = '#ddd6c8';
-      document.getElementById('paso-ind-2').style.color = '#8a857d';
+      document.getElementById('paso-ind-2').style.background = 'var(--crema-osc)';
+      document.getElementById('paso-ind-2').style.color = 'var(--gris-txt)';
       document.getElementById('paso-ind-3').style.background = 'var(--rojo)';
-      document.getElementById('paso-ind-3').style.color = '#fff';
+      document.getElementById('paso-ind-3').style.color = '#0A0A0C';
       document.getElementById('reg-confirmacion').innerHTML =
         'Hola <strong style="color:var(--carbon)">' + nombre + '</strong> — tu registro para <strong style="color:var(--carbon)">' + curso + '</strong> fue recibido. Te contactaremos al <strong style="color:var(--carbon)">' + celular + '</strong> para confirmar tu lugar.';
     }
