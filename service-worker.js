@@ -2,8 +2,8 @@ const CACHE_NAME = "tempo-latino-app-v1";
 const ASSETS_TO_CACHE = [
   "/app.html",
   "/manifest.json",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png",
+  "/icon-192.png",
+  "/icon-512.png",
   "/img/logo-tempo-latino.png"
 ];
 
