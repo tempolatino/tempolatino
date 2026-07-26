@@ -1,0 +1,201 @@
+<!--
+  ============================================================
+  MODAL: Elegir método de pago (Pago en línea vs Transferencia)
+  Tempo Latino – app.html
+  ============================================================
+
+  CÓMO INTEGRARLO:
+  1. Pega el bloque <div id="modalPago">...</div> justo antes de </body>.
+  2. Pega el <style> dentro de tu <head> (o en tu CSS existente).
+  3. Busca el botón que dice "Continuar → Pagar $50" en tu HTML.
+     Cámbiale el atributo así:  onclick="abrirModalPago()"
+     (en vez de que te mande directo al paso 2 de pago).
+  4. Pega el <script> al final, antes de </body>.
+  5. Ajusta la función avanzarAPagoEnLinea() para que dispare
+     tu lógica actual del paso 2 (la que ya tienes).
+-->
+
+<style>
+  .modal-pago-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-pago-overlay.activo { display: flex; }
+
+  .modal-pago-caja {
+    background: #0A0A0C;
+    border: 1px solid #C9A24B;
+    border-radius: 14px;
+    max-width: 420px;
+    width: 100%;
+    padding: 28px 22px;
+    text-align: center;
+    color: #fff;
+    font-family: inherit;
+  }
+
+  .modal-pago-caja h3 {
+    color: #C9A24B;
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+  }
+  .modal-pago-caja p.sub {
+    color: #cfcfcf;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .btn-metodo {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid #C9A24B;
+    background: transparent;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-metodo:hover { background: rgba(201,162,75,0.15); }
+  .btn-metodo.linea { background: #C9A24B; color: #0A0A0C; }
+  .btn-metodo.linea:hover { background: #d9b45e; }
+
+  /* Vista de transferencia */
+  .vista-transferencia { display: none; text-align: left; }
+  .vista-transferencia.activo { display: block; }
+
+  .datos-bancarios {
+    background: #151517;
+    border: 1px solid #C9A24B55;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .datos-bancarios .label { color: #C9A24B; font-weight: 700; }
+  .datos-bancarios .nota { color: #ff6b6b; font-size: 0.82rem; margin-top: 10px; }
+
+  .btn-whatsapp-transfer {
+    display: block;
+    text-align: center;
+    background: #25D366;
+    color: #0A0A0C;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 14px;
+  }
+
+  .btn-volver {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .btn-cerrar-modal {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+</style>
+
+<div id="modalPago" class="modal-pago-overlay">
+  <div class="modal-pago-caja" style="position:relative;">
+    <button class="btn-cerrar-modal" onclick="cerrarModalPago()">×</button>
+
+    <!-- Vista 1: elegir método -->
+    <div id="vistaEleccion">
+      <h3>¿Cómo quieres apartar?</h3>
+      <p class="sub">Elige tu método para el depósito de $50 MXN</p>
+
+      <button class="btn-metodo linea" onclick="avanzarAPagoEnLinea()">
+        💳 Pagar en línea (Clip)
+      </button>
+
+      <button class="btn-metodo" onclick="mostrarVistaTransferencia()">
+        🏦 Pagar por transferencia
+      </button>
+    </div>
+
+    <!-- Vista 2: datos de transferencia -->
+    <div id="vistaTransferencia" class="vista-transferencia">
+      <h3 style="text-align:center;">Datos de pago</h3>
+      <p class="sub" style="text-align:center;">Banorte · Débito</p>
+
+      <div class="datos-bancarios">
+        <div><span class="label">Beneficiario:</span> Eduardo Segura Lujan</div>
+        <div><span class="label">Tarjeta:</span> 4189 1434 1008 8036</div>
+        <div><span class="label">CLABE:</span> 072 1500 0205 252 1303</div>
+        <div class="nota">Nota: en el depósito pon tu nombre y apellido como referencia.</div>
+      </div>
+
+      <p style="font-size:0.9rem; color:#cfcfcf;">
+        Cuando hagas tu transferencia, manda tu comprobante por WhatsApp
+        junto con tu <strong>nombre completo</strong> y tu <strong>número de celular</strong>.
+      </p>
+
+      <a
+        class="btn-whatsapp-transfer"
+        id="linkWhatsappTransfer"
+        href="https://wa.me/526561323773?text=Hola%2C%20aqu%C3%AD%20est%C3%A1%20mi%20comprobante%20de%20transferencia%20para%20apartar%20mi%20clase."
+        target="_blank"
+      >
+        📲 Enviar comprobante por WhatsApp
+      </a>
+
+      <button class="btn-volver" onclick="volverAEleccion()">← Volver</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function abrirModalPago() {
+    document.getElementById('modalPago').classList.add('activo');
+    volverAEleccion(); // siempre abre mostrando la elección primero
+  }
+
+  function cerrarModalPago() {
+    document.getElementById('modalPago').classList.remove('activo');
+  }
+
+  function mostrarVistaTransferencia() {
+    document.getElementById('vistaEleccion').style.display = 'none';
+    document.getElementById('vistaTransferencia').classList.add('activo');
+  }
+
+  function volverAEleccion() {
+    document.getElementById('vistaEleccion').style.display = 'block';
+    document.getElementById('vistaTransferencia').classList.remove('activo');
+  }
+
+  function avanzarAPagoEnLinea() {
+    // Aquí conecta tu lógica actual: cerrar este modal
+    // y seguir con el flujo normal de Clip / paso 2.
+    cerrarModalPago();
+
+    // EJEMPLO (ajusta el id/función real de tu app):
+    // mostrarPaso2();
+    // o si tu paso 2 es un div oculto:
+    // document.getElementById('paso2').style.display = 'block';
+  }
+</script>
