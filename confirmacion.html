@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Registro Confirmado! - Tempo Latino</title>
+<style>
+  :root {
+    --dorado: #C9A24B;
+    --dorado-claro: #E4C97A;
+    --carbon: #1A1A1A;
+    --carbon-suave: #2A2A2A;
+    --crema: #F5F0E6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--carbon);
+    color: var(--crema);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .card {
+    background: var(--carbon-suave);
+    border: 1px solid var(--dorado);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  .check {
+    width: 70px;
+    height: 70px;
+    background: var(--dorado);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+
+  .check svg { width: 36px; height: 36px; stroke: var(--carbon); stroke-width: 3; }
+
+  h1 {
+    font-size: 1.6rem;
+    color: var(--dorado-claro);
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--crema);
+    opacity: 0.9;
+  }
+
+  .highlight {
+    background: rgba(201, 162, 75, 0.12);
+    border-left: 3px solid var(--dorado);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: left;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .highlight strong { color: var(--dorado-claro); }
+
+  .btn {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--carbon);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    transition: background 0.2s ease;
+  }
+
+  .btn:hover { background: var(--dorado-claro); }
+
+  .btn-secundario {
+    display: block;
+    margin-top: 1rem;
+    color: var(--dorado);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .btn-secundario:hover { text-decoration: underline; }
+
+  .logo {
+    max-width: 140px;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="img/logo-tempo-latino.png" alt="Tempo Latino" class="logo" onerror="this.style.display='none'">
+
+    <div class="check">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <h1>¡Tu apartado quedó confirmado!</h1>
+    <p>Recibimos tu pago de <strong>$50 MXN</strong>. Ya tienes tu lugar reservado.</p>
+
+    <div class="highlight">
+      <strong>Siguiente paso:</strong> manda tu comprobante de pago por WhatsApp junto con tu nombre completo y la clase a la que te apuntaste, para que quede registrado en nuestra lista.
+    </div>
+
+    <p style="font-size: 0.9rem; opacity: 0.75;">Llega 10–15 minutos antes de tu clase, con ropa cómoda y muchas ganas de bailar. ¡Te esperamos!</p>
+
+    <a href="https://wa.me/526561323773?text=Hola%2C%20ya%20realic%C3%A9%20mi%20pago%20de%20apartado" target="_blank" class="btn">Enviar comprobante por WhatsApp</a>
+
+    <a href="https://tempolatino.lat" class="btn-secundario">← Volver al inicio</a>
+  </div>
+
+</body>
+</html>
