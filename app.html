@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Tempo Latino – Aparta tu clase</title>
+  <meta name="description" content="Elige tu clase, paga tu depósito y aparta tu lugar en Tempo Latino." />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0A0A0C" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Tempo Latino" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" href="icons/icon-192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --crema:      #0A0A0C;
+      --crema-osc:  #131316;
+      --tarjeta:    rgba(20, 20, 25, 0.7);
+      --borde:      rgba(212, 175, 55, 0.22);
+      --carbon:     #E7E2D6;
+      --gris-txt:   #A0A0A8;
+      --rojo:       #D4AF37;
+      --rojo-osc:   #AA771C;
+      --rojo-suave: rgba(212, 175, 55, 0.14);
+      --blanco:     #FFFFFF;
+      --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+      --display:    'Cinzel', serif;
+      --body:       'Plus Jakarta Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--crema); color: var(--carbon); font-family: var(--body);
+      font-size: 16px; line-height: 1.6; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .top-bar {
+      width: 100%; padding: 1.1rem 1.5rem; display: flex; justify-content: center;
+      border-bottom: 1px solid var(--borde); background: rgba(10,10,12,0.9);
+      backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 10;
+    }
+    .logo-mark { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; display: block; }
+    .logo-texto { font-family: var(--display); font-size: 1.15rem; color: var(--carbon); letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
+    .logo-texto em { font-style: normal; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    main { width: 100%; max-width: 560px; padding: 2rem 1.1rem 3rem; }
+    .section-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.6rem; text-align: center; }
+    .section-title { font-family: var(--display); font-size: clamp(1.9rem, 8vw, 2.5rem); line-height: 1.1; text-transform: uppercase; letter-spacing: 0.01em; color: var(--carbon); text-align: center; }
+    .section-title em { font-style: normal; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .section-desc { margin-top: 0.7rem; color: var(--gris-txt); font-size: 0.9rem; text-align: center; }
+
+    .install-banner {
+      display: none; margin-top: 1.2rem; padding: 0.85rem 1rem; background: var(--tarjeta);
+      border: 1px solid var(--borde); border-radius: 8px; font-size: 0.82rem; color: var(--gris-txt);
+      align-items: center; justify-content: space-between; gap: 0.8rem;
+    }
+    .install-banner.show { display: flex; }
+    .install-banner button {
+      flex-shrink: 0; background: var(--rojo); color: #0A0A0C; border: none; font-weight: 700;
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.55rem 0.9rem;
+      border-radius: 4px; cursor: pointer;
+    }
+
+    .apartado-box {
+      margin-top: 1.6rem; background: var(--tarjeta); border: 1px solid var(--borde);
+      padding: 1.8rem 1.4rem; border-radius: 12px; text-align: center;
+      backdrop-filter: blur(6px);
+    }
+    .apartado-monto { font-family: var(--display); font-size: 3.6rem; color: var(--rojo); line-height: 1; margin-bottom: 0.2rem; }
+    .apartado-monto sup { font-size: 1.6rem; vertical-align: super; }
+    .apartado-sub { font-size: 0.78rem; color: var(--gris-txt); margin-bottom: 1.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    .clip-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem;
+      background: var(--rojo); color: #0A0A0C; font-weight: 700; font-size: 1rem;
+      text-decoration: none; padding: 1.05rem 2rem; text-transform: uppercase;
+      letter-spacing: 0.05em; transition: background 0.2s, transform 0.15s; width: 100%;
+      border-radius: 6px; border: none; cursor: pointer;
+    }
+    .clip-btn:hover { background: var(--rojo-osc); transform: translateY(-2px); }
+    .clip-aviso { margin-top: 1rem; font-size: 0.75rem; color: var(--gris-txt); }
+
+    .apartado-box input, .apartado-box select {
+      width: 100%; padding: 0.8rem 1rem; background: var(--crema-osc);
+      border: 1px solid var(--borde); color: var(--carbon); font-size: 0.95rem;
+      border-radius: 6px; box-sizing: border-box; font-family: var(--body);
+    }
+    .apartado-box select { appearance: none; }
+    .apartado-box label { display: block; font-size: 0.74rem; color: var(--gris-txt); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+
+    #form-pasos { display: flex; gap: 0; margin-bottom: 1.8rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--borde); }
+    #form-pasos > div { flex: 1; padding: 0.6rem 0.3rem; text-align: center; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; background: var(--crema-osc); color: var(--gris-txt); }
+    #form-pasos > div.activo { background: var(--rojo); color: #0A0A0C; }
+
+    .nota-box {
+      margin-top: 1rem; font-size: 0.78rem; color: var(--gris-txt); text-align: left;
+      background: var(--crema-osc); border: 1px solid var(--borde); border-radius: 6px;
+      padding: 0.75rem 1rem; line-height: 1.5;
+    }
+    .nota-box strong { color: var(--carbon); }
+
+    #reg-error { display: none; margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.35); color: var(--rojo); font-size: 0.85rem; border-radius: 6px; }
+
+    footer { margin-top: auto; padding: 1.5rem; font-size: 0.75rem; color: var(--gris-txt); text-align: center; }
+    footer a { color: var(--rojo); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="logo-mark">
+      <img src="img/logo-tempo-latino.png" alt="Tempo Latino Academia de Baile" class="logo-img">
+      <span class="logo-texto">TEMPO <em>LATINO</em></span>
+    </a>
+  </div>
+
+  <main>
+    <p class="section-eyebrow">Reserva tu lugar</p>
+    <h2 class="section-title">Aparta tu <em>clase</em></h2>
+    <p class="section-desc">Elige tu clase, paga tu depósito de $50 MXN y listo — tu lugar queda asegurado.</p>
+
+    <div id="install-banner" class="install-banner">
+      <span id="install-text">📲 Instala esta app en tu celular para acceso rápido.</span>
+      <button id="btn-instalar">Instalar</button>
+    </div>
+
+    <div class="apartado-box">
+
+      <div id="form-pasos">
+        <div id="paso-ind-1" class="activo">1 · Tus datos</div>
+        <div id="paso-ind-2">2 · Pagar $50</div>
+        <div id="paso-ind-3">3 · Confirmar</div>
+      </div>
+
+      <div id="paso-1">
+        <div style="display:flex;flex-direction:column;gap:1rem;text-align:left;">
+          <div>
+            <label>Nombre completo *</label>
+            <input id="reg-nombre" type="text" placeholder="Ej. María González Ruiz">
+          </div>
+          <div>
+            <label>Celular (WhatsApp) *</label>
+            <input id="reg-celular" type="tel" placeholder="656 123 4567">
+          </div>
+          <div>
+            <label>Género *</label>
+            <select id="reg-genero">
+              <option value="">— Selecciona —</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Hombre">Hombre</option>
+              <option value="Prefiero no decir">Prefiero no decir</option>
+            </select>
+          </div>
+          <div>
+            <label>Clase que te interesa *</label>
+            <select id="reg-curso">
+              <option value="">— Selecciona una clase —</option>
+              <option value="Sensual Chair Dance · Lunes 6:30–8:00 PM ($500 MXN)">Sensual Chair Dance · Lunes 6:30–8:00 PM ($500 MXN)</option>
+              <option value="Salsa y Bachata · Lunes 8:00–10:00 PM ($550 MXN)">Salsa y Bachata · Lunes 8:00–10:00 PM ($550 MXN)</option>
+              <option value="Ritmos de Bodas, XVs o Graduaciones · Martes 6:00–8:00 PM ($550 MXN)">Ritmos de Bodas, XVs o Graduaciones · Martes 6:00–8:00 PM ($550 MXN)</option>
+              <option value="Cumbia Moderna · Martes 8:00–10:00 PM ($550 MXN)">Cumbia Moderna · Martes 8:00–10:00 PM ($550 MXN)</option>
+              <option value="Cumbia Moderna · Miércoles 6:00–8:00 PM ($550 MXN)">Cumbia Moderna · Miércoles 6:00–8:00 PM ($550 MXN)</option>
+              <option value="Ritmos de Fiesta · Miércoles 8:00–10:00 PM ($550 MXN)">Ritmos de Fiesta · Miércoles 8:00–10:00 PM ($550 MXN)</option>
+              <option value="Rancheras, Banda y Corridos · Jueves 6:00–8:00 PM ($550 MXN)">Rancheras, Banda y Corridos · Jueves 6:00–8:00 PM ($550 MXN)</option>
+              <option value="Cumbia: Puras Vueltas · Jueves 8:00–10:00 PM ($550 MXN)">Cumbia: Puras Vueltas · Jueves 8:00–10:00 PM ($550 MXN)</option>
+              <option value="Ritmos de Fiesta · Sábado 10:00 AM–12:00 PM ($550 MXN)">Ritmos de Fiesta · Sábado 10:00 AM–12:00 PM ($550 MXN)</option>
+              <option value="Cumbia Moderna · Sábado 12:00–2:00 PM ($550 MXN)">Cumbia Moderna · Sábado 12:00–2:00 PM ($550 MXN)</option>
+              <option value="Flex y Body Control · Sábado 3:00–4:00 PM ($400 MXN)">Flex y Body Control · Sábado 3:00–4:00 PM ($400 MXN)</option>
+              <option value="Sensual Chair Dance · Sábado 4:00–6:00 PM ($550 MXN)">Sensual Chair Dance · Sábado 4:00–6:00 PM ($550 MXN)</option>
+            </select>
+          </div>
+        </div>
+        <div id="reg-error"></div>
+        <p class="nota-box">
+          📌 <strong>Nota:</strong> El depósito de $50 MXN es solo para apartar tu lugar. El resto del costo se paga <strong>en efectivo, aquí en la academia</strong>, el día que inicias tu clase.
+        </p>
+        <button id="btn-paso1" onclick="irPaso2()" style="margin-top:1.4rem;width:100%;padding:1rem;background:var(--rojo);color:#0A0A0C;font-weight:700;font-size:0.92rem;text-transform:uppercase;letter-spacing:0.06em;border:none;cursor:pointer;border-radius:6px;">
+          Continuar → Pagar $50
+        </button>
+      </div>
+
+      <div id="paso-2" style="display:none;text-align:center;">
+        <div class="apartado-monto"><sup>$</sup>50</div>
+        <div class="apartado-sub">MXN · Depósito para apartar tu lugar</div>
+        <p style="font-size:0.86rem;color:var(--gris-txt);margin-bottom:1rem;line-height:1.6;">
+          Toca abajo para pagar $50 MXN con tarjeta vía Clip.<br>
+          Cuando termines, regresa aquí y presiona <strong style="color:var(--carbon)">«Ya pagué»</strong>.
+        </p>
+        <p class="nota-box" style="margin-bottom:1.5rem;">
+          📌 El resto de la clase se liquida <strong>en efectivo, en la academia</strong>, el día que inicias.
+        </p>
+        <a href="https://buy.stripe.com/00w8wR7TT2POfovegTa3u00" class="clip-btn" target="_blank" rel="noopener" onclick="setTimeout(()=>document.getElementById('btn-yapague').style.display='block',4000)">
+          💳 Pagar $50 MXN
+        </a>
+        <button id="btn-yapague" onclick="irPaso3()" style="display:none;margin-top:1rem;width:100%;padding:1rem;background:var(--crema-osc);border:1px solid var(--borde);color:var(--carbon);font-weight:700;font-size:0.92rem;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;border-radius:6px;">
+          ✅ Ya pagué — confirmar registro
+        </button>
+        <p class="clip-aviso">⚡ El depósito se descuenta del total de la clase · Pago 100% seguro vía Clip</p>
+      </div>
+
+      <div id="paso-3" style="display:none;text-align:center;">
+        <div style="font-size:2.8rem;margin-bottom:1rem;">🎉</div>
+        <h3 style="font-family:var(--display);font-size:1.5rem;color:var(--carbon);margin-bottom:0.5rem;">¡Ya quedaste registrado!</h3>
+        <p id="reg-confirmacion" style="font-size:0.88rem;color:var(--gris-txt);line-height:1.7;margin-bottom:1.4rem;"></p>
+        <p class="nota-box" style="text-align:center;">
+          📲 Mándanos tu comprobante de pago por WhatsApp para confirmar tu lugar al 100%.
+        </p>
+        <a href="https://wa.me/526561323773" target="_blank" rel="noopener" style="display:inline-block;margin-top:1.2rem;padding:0.85rem 2rem;background:var(--rojo);color:#0A0A0C;font-weight:700;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;text-decoration:none;border-radius:6px;">
+          Enviar comprobante por WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    ¿Dudas? Escríbenos por <a href="https://wa.me/526561323773" target="_blank" rel="noopener">WhatsApp</a>
+  </footer>
+
+  <script>
+    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbwzWxuhEvGfwcPlRvrhILJGnjATy2FlRW8IfWvMj9YwXKm2KFJreB4K8EprcIQyEK3A2A/exec";
+
+    // Si el link trae ?curso=Nombre de la clase, la preselecciona (útil para QR por clase en flyers).
+    (function preseleccionarCurso() {
+      const params = new URLSearchParams(window.location.search);
+      const curso = params.get('curso');
+      if (!curso) return;
+      const select = document.getElementById('reg-curso');
+      const palabrasBuscadas = curso.toLowerCase().split(/\s+/).filter(Boolean);
+
+      let mejorOpcion = null;
+      let mejorPuntaje = 0;
+      for (const opt of select.options) {
+        if (!opt.value) continue;
+        const valorLower = opt.value.toLowerCase();
+        const puntaje = palabrasBuscadas.filter(p => valorLower.indexOf(p) !== -1).length;
+        if (puntaje > mejorPuntaje) {
+          mejorPuntaje = puntaje;
+          mejorOpcion = opt.value;
+        }
+      }
+      if (mejorOpcion) select.value = mejorOpcion;
+    })();
+
+    function irPaso2() {
+      var nombre  = document.getElementById('reg-nombre').value.trim();
+      var celular = document.getElementById('reg-celular').value.trim();
+      var genero  = document.getElementById('reg-genero').value;
+      var curso   = document.getElementById('reg-curso').value;
+      var err = document.getElementById('reg-error');
+
+      if (!nombre) { mostrarError('Por favor ingresa tu nombre completo.'); return; }
+      if (!genero) { mostrarError('Por favor selecciona tu género.'); return; }
+      if (!curso)  { mostrarError('Por favor selecciona una clase.'); return; }
+      var celularLimpio = celular.replace(/\D/g, '');
+      if (celularLimpio.length !== 10) { mostrarError('Ingresa un número de celular válido (10 dígitos).'); return; }
+
+      err.style.display = 'none';
+      document.getElementById('paso-1').style.display = 'none';
+      document.getElementById('paso-2').style.display = 'block';
+      document.getElementById('paso-ind-1').classList.remove('activo');
+      document.getElementById('paso-ind-2').classList.add('activo');
+    }
+
+    function mostrarError(msg) {
+      var err = document.getElementById('reg-error');
+      err.textContent = msg;
+      err.style.display = 'block';
+    }
+
+    function irPaso3() {
+      var nombre  = document.getElementById('reg-nombre').value.trim();
+      var celular = document.getElementById('reg-celular').value.trim();
+      var curso   = document.getElementById('reg-curso').value;
+      var fecha   = new Date().toLocaleDateString('es-MX');
+
+      fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: nombre, celular: celular, genero: document.getElementById('reg-genero').value, curso: curso, anticipo: 50, fecha: fecha })
+      });
+
+      document.getElementById('paso-2').style.display = 'none';
+      document.getElementById('paso-3').style.display = 'block';
+      document.getElementById('paso-ind-2').classList.remove('activo');
+      document.getElementById('paso-ind-3').classList.add('activo');
+      document.getElementById('reg-confirmacion').innerHTML =
+        'Hola <strong style="color:var(--carbon)">' + nombre + '</strong> — tu registro para <strong style="color:var(--carbon)">' + curso + '</strong> fue recibido. Te contactaremos al <strong style="color:var(--carbon)">' + celular + '</strong> para confirmar tu lugar.';
+    }
+
+    // ---- PWA: registrar service worker ----
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(() => {});
+      });
+    }
+
+    // ---- PWA: banner de instalación (Android / Chrome) ----
+    let deferredPrompt;
+    const banner = document.getElementById('install-banner');
+    const btnInstalar = document.getElementById('btn-instalar');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      banner.classList.add('show');
+    });
+
+    btnInstalar.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      banner.classList.remove('show');
+    });
+
+    window.addEventListener('appinstalled', () => {
+      banner.classList.remove('show');
+    });
+
+    // ---- PWA: instrucciones para iPhone (Safari no soporta beforeinstallprompt) ----
+    (function mostrarAvisoIOS() {
+      const esIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      const yaInstalada = window.navigator.standalone === true;
+      if (esIOS && !yaInstalada) {
+        document.getElementById('install-text').textContent =
+          '📲 En iPhone: toca Compartir → "Agregar a inicio" para instalar la app.';
+        banner.classList.add('show');
+      }
+    })();
+  </script>
+</body>
+</html>
